@@ -1,16 +1,13 @@
 <template>
-  <!-- ★ここから追記 -->
   <div class="list">
     <div class="listheader">
       <p class="list-title">{{ title }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
   </div>
-  <!-- ★ここまで追記 -->
 </template>
 
 <script>
-// ★ここから追記
 export default {
   props: {
     title: {
@@ -30,5 +27,4 @@ export default {
     },
   },
 };
-// ★ここまで追記
 </script>

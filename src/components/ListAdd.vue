@@ -1,5 +1,4 @@
 <template>
-  <!-- ★ここを編集 -->
   <form :class="classList" @submit.prevent="addList">
     <input
       v-model="title"
@@ -13,7 +12,6 @@
       Add
     </button>
   </form>
-  <!-- ★ここまで追記 -->
 </template>
 
 <script>
@@ -31,33 +29,26 @@ export default {
       if (this.isEditing) {
         classList.push("active");
       }
-      // ★ここから追記
       if (this.titleExists) {
         classList.push("addable");
       }
-      // ★ここまで追記
       return classList;
     },
-    // ★ここから追記
     titleExists() {
       return this.title.length > 0;
     },
-    // ★ここまで追記
   },
-  // ★ここまで追加
   methods: {
     addList() {
-      this.$store.dispatch("addlist", this.title);
+      this.$store.dispatch("addlist", { title: this.title });
       this.title = "";
     },
-    // ★ここから追記
     startEditing() {
       this.isEditing = true;
     },
     finishEditing() {
       this.isEditing = false;
     },
-    // ★ここまで追記
   },
 };
 </script>
