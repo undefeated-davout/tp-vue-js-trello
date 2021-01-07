@@ -4,24 +4,33 @@
       <p class="list-title">{{ title }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
-    <!-- ★ここに追記 -->
+    <card
+      v-for="(item, index) in cards"
+      :body="item.body"
+      :key="item.id"
+      :cardIndex="index"
+      :listIndex="listIndex"
+    />
     <card-add :listIndex="listIndex" />
   </div>
 </template>
 
 <script>
-// ★追記
 import CardAdd from "./CardAdd";
+import Card from "./Card";
 
 export default {
-  // ★ここから追記
   components: {
     CardAdd,
+    Card,
   },
-  // ★ここまで追記
   props: {
     title: {
       type: String,
+      required: true,
+    },
+    cards: {
+      type: Array,
       required: true,
     },
     listIndex: {
